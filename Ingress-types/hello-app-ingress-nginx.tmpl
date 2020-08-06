@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-app-nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: tcp.$INGRESS_HOST.nip.io
+    http:
+      paths:
+      - path: /hello$
+        backend:
+          serviceName: hello-app-ip
+          servicePort: 8080
+      - path: /hello-np
+        backend:
+          serviceName: hello-app-np
+          servicePort: 8080
