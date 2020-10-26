@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: php-apache
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: tcp.$INGRESS_HOST.nip.io
+    http:
+      paths:
+      - path: /php
+        backend:
+          serviceName: php-apache
+          servicePort: 80
