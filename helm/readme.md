@@ -1,3 +1,6 @@
+# [Helm v2->v3 Upgrade](helm-upgrade.md)
+# [Nginx-ingress Upgrade](nginx-upgrade.md)
+
 # ENV
 ```
 PROJECT=p-ingress-tutorial
@@ -18,3 +21,4 @@ NGINX_TARGET_RELEASE=0.44.0
 NGINX_TARGET_IMAGE=k8s.gcr.io/ingress-nginx/controller:v0.44.0
 NGINX_CHART_MANIFEST=https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.44.0/deploy/static/provider/cloud/deploy.yaml
 ```
+# [Dockerized env setup for dry-run](env-prep.md)
