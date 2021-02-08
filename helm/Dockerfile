@@ -24,6 +24,9 @@ RUN ln -s /usr/local/bin/helm /usr/bin/helm2
 RUN curl https://sdk.cloud.google.com | bash
 # RUN gcloud init --console-only
 
+# Extra utils
+RUN apt-get install -y vim nano
+
 # USER
 # ENV HOME /home/user
 # RUN mkdir -p $HOME && useradd user -d $HOME && chown -R user:user $HOME
