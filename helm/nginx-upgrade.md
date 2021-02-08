@@ -3,7 +3,7 @@
 export PROJECT=p-ingress-tutorial
 export CLUSTER=nginx-tutorial
 export ZONE=us-central1-c
-export PRODUCT=tutorial
+export RELEASE=tutorial
 export NGINX_NAMESPACE=default
 export KUBE_CONTEXT=gke_${PROJECT}_${ZONE}_${CLUSTER}
 ```
@@ -22,13 +22,13 @@ kubectl exec -it $POD_NAME -n $NGINX_NAMESPACE -- /nginx-ingress-controller --ve
 # Check config v2 & v3
 ```
 # v2
-helm2 status $PRODUCT
+helm2 status $RELEASE
 helm2 inspect stable/nginx-ingress
-helm2 get $PRODUCT > $PRODUCT.chart.v2.yaml
+helm2 get $RELEASE > $RELEASE.chart.v2.yaml
 # v3
-helm3 status $PRODUCT
+helm3 status $RELEASE
 helm3 show values ingress-nginx/ingress-nginx
-helm3 get all $PRODUCT > $PRODUCT.chart.v3.yaml
+helm3 get all $RELEASE > $RELEASE.chart.v3.yaml
 ```
 
 # Init Helm v3
@@ -46,7 +46,7 @@ https://github.com/kubernetes/ingress-nginx/blob/master/charts/ingress-nginx/REA
 # Upgrading NGINX controller using Helm
 https://kubernetes.github.io/ingress-nginx/deploy/upgrade/
 ```
-helm3 upgrade --reuse-values $PRODUCT ingress-nginx/ingress-nginx --kube-context $KUBE_CONTEXT \
+helm3 upgrade --reuse-values $RELEASE ingress-nginx/ingress-nginx --kube-context $KUBE_CONTEXT \
   --set controller.admissionWebhooks.enabled=false \
   --set controller.admissionWebhooks.patch.enabled=false \
   --set defaultBackend.enabled=true

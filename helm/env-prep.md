@@ -3,7 +3,7 @@
 export PROJECT=p-ingress-tutorial
 export CLUSTER=nginx-tutorial
 export ZONE=us-central1-c
-export PRODUCT=tutorial
+export RELEASE=tutorial
 export APP=nginx-ingress
 export HELM_VERSION=v2.14.3
 export NGINX_CHART=nginx-ingress-1.17.1
@@ -55,11 +55,11 @@ helm2 init --service-account tiller --override spec.selector.matchLabels.'name'=
 ```
 # Clean-up
 helm2 delete nginx-ingress
-helm2 delete ${PRODUCT}
-helm2 del --purge ${PRODUCT}
+helm2 delete ${RELEASE}
+helm2 del --purge ${RELEASE}
 
 # Install (broken for older charts due to k8s API change)
-# helm install --name ${PRODUCT} stable/nginx-ingress --version '1.17.1'
+# helm install --name ${RELEASE} stable/nginx-ingress --version '1.17.1'
 
 # Workaround for discontinued k8s apiVersion and missing labels (old Charts)
 cd root && helm fetch  stable/nginx-ingress --version '1.17.1' --untar
@@ -70,5 +70,5 @@ sed -z -i 's/^spec:/spec:\n  selector:\n    matchLabels:\n      app: {{ template
 sed -z -i 's/^spec:/spec:\n  selector:\n    matchLabels:\n      app: {{ template "nginx-ingress.name" . }}\n      release: {{ .Release.Name }}\n      component: "{{ .Values.defaultBackend.name }}"/' default-backend-deployment.yaml
 
 cd root
-helm2 install --name ${PRODUCT}  ./nginx-ingress --version '1.17.1'
+helm2 install --name ${RELEASE}  ./nginx-ingress --version '1.17.1'
 ```

@@ -9,7 +9,7 @@ https://github.com/helm/helm-2to3
 export PROJECT=p-ingress-tutorial
 export CLUSTER=nginx-tutorial
 export ZONE=us-central1-c
-export PRODUCT=tutorial
+export RELEASE=tutorial
 export APP=nginx-ingress
 
 export KUBE_CONTEXT=gke_${PROJECT}_${ZONE}_${CLUSTER}
@@ -21,7 +21,7 @@ kubectl config use-context $KUBE_CONTEXT
 ```
 helm3 ls
 helm2 ls
-helm2 get $PRODUCT >| $PRODUCT.chart.v2.yaml
+helm2 get $RELEASE >| $RELEASE.chart.v2.yaml
 helm2 get cert-manager >| cert-manager.chart.v2.yaml
 tar -czvf helm.config.tgz ~/.helm
 ```
@@ -41,8 +41,8 @@ helm3 repo update
 
 # Migrate Charts
 ```
-helm3 2to3 convert $PRODUCT --dry-run --release-versions-max 3 --kube-context $KUBE_CONTEXT
-helm3 2to3 convert $PRODUCT --release-versions-max 3 --kube-context $KUBE_CONTEXT
+helm3 2to3 convert $RELEASE --dry-run --release-versions-max 3 --kube-context $KUBE_CONTEXT
+helm3 2to3 convert $RELEASE --release-versions-max 3 --kube-context $KUBE_CONTEXT
 ```
 
 # Final Clean-up
