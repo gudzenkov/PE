@@ -40,7 +40,7 @@ kubectl delete hpa php-apache
 # Patch Nginx-Ingress with Prometheus-to-SD exporter
 ```
 kubectl get deployment nginx-ingress-controller -o yaml > nginx-ingress-controller.yaml
-kubectl patch deployment nginx-ingress-controller --patch "$(cat nginx-ingress-patch.yaml)"
+kubectl patch deployment nginx-ingress-controller --patch "$(cat nginx-ingress-controller-patch.yaml)"
 kubectl get deployment nginx-ingress-controller -o yaml > nginx-ingress-controller-sd.yaml
 ```
 
