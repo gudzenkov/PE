@@ -46,10 +46,10 @@ https://github.com/kubernetes/ingress-nginx/blob/master/charts/ingress-nginx/REA
 # Upgrading NGINX controller using Helm
 https://kubernetes.github.io/ingress-nginx/deploy/upgrade/
 ```
-helm3 upgrade --reuse-values $RELEASE ingress-nginx/ingress-nginx --kube-context $KUBE_CONTEXT \
-  --set controller.admissionWebhooks.enabled=false \
-  --set controller.admissionWebhooks.patch.enabled=false \
-  --set defaultBackend.enabled=true
+# classical upgrade is broken due to large portion of new chart changed
+# helm3 upgrade --reuse-values $RELEASE ingress-nginx/ingress-nginx --kube-context $KUBE_CONTEXT
+# requires default values override:
+./scripts/ingress-nginx.sh
 
 kubectl wait --namespace $NGINX_NAMESPACE \
   --for=condition=ready pod \
