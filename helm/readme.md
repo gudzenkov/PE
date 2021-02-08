@@ -1,0 +1,19 @@
+# ENV
+```
+PROJECT=p-ingress-tutorial
+CLUSTER=nginx-tutorial
+ZONE=us-central1-c
+PRODUCT=tutorial
+APP=nginx-ingress
+HELM_VERSION=v2.14.3
+HELM_TARGET=v3.5.2
+NGINX_NAMESPACE=default
+NGINX_CHART=nginx-ingress-1.17.1
+NGINX_RELEASE=0.25.1
+NGINX_VERSION=openresty/1.15.8.1
+NGINX_IMAGE=quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.25.1
+NGINX_TARGET_CHART=ingress-nginx-3.23.0
+NGINX_TARGET_RELEASE=0.44.0
+NGINX_TARGET_IMAGE=k8s.gcr.io/ingress-nginx/controller:v0.44.0
+```
+https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.44.0/deploy/static/provider/cloud/deploy.yaml
