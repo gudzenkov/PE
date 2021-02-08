@@ -9,9 +9,11 @@ export KUBE_CONTEXT=gke_${PROJECT}_${ZONE}_${CLUSTER}
 ```
 
 # K8s context
+```
 export KUBE_CONTEXT=gke_${PROJECT}_${ZONE}_${CLUSTER}
 kubectl config current-context
 kubectl config use-context $KUBE_CONTEXT
+```
 
 # Detect NGINX controller Version
 ```
