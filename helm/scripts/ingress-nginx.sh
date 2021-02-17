@@ -1,16 +1,17 @@
 #!/bin/bash
-PROJECT=p-ingress-tutorial
-CLUSTER=nginx-tutorial
-ZONE=us-central1-c
+# PROJECT=p-ingress-tutorial
+# CLUSTER=nginx-tutorial
+# ZONE=us-central1-c
+# RELEASE=tutorial
+# LB_STATIC_IP=34.71.238.129
+# NGINX_CHART_TARGET="3.23.0"
+
 KUBE_CONTEXT=gke_${PROJECT}_${ZONE}_${CLUSTER}
 kubectl config use-context $KUBE_CONTEXT
 
 CHART_NAME="ingress-nginx/ingress-nginx"
-CHART_VERSION="3.23.0"
-RELEASE=tutorial
 NAMESPACE=default
 VALUES_FILE=ingress-nginx.yaml
-LB_STATIC_IP=34.66.80.3
 
 generateValues() {
    cat << EOF > "${VALUES_FILE}"
@@ -38,7 +39,7 @@ EOF
 
 generateValues
 echo
-helm3 upgrade --install ${RELEASE}  --kube-context $KUBE_CONTEXT -n ${NAMESPACE} ${CHART_NAME} --version ${CHART_VERSION} -f ${VALUES_FILE}
+helm3 upgrade --install ${RELEASE}  --kube-context $KUBE_CONTEXT -n ${NAMESPACE} ${CHART_NAME} --version ${NGINX_CHART_TARGET} -f ${VALUES_FILE}
 echo
 kubectl -n ${NAMESPACE} get all
 echo

@@ -6,8 +6,8 @@ https://github.com/helm/helm-2to3
 
 # Set ENV and K8s context
 ```
-export PROJECT=p-ingress-tutorial
-export CLUSTER=nginx-tutorial
+export PROJECT=gke-onprem-lab-281510
+export CLUSTER=nginx-dev-cluster
 export ZONE=us-central1-c
 export RELEASE=tutorial
 export APP=nginx-ingress
@@ -28,12 +28,12 @@ tar -czvf helm.config.tgz ~/.helm
 
 # Migrate Helm configs & data
 ```
-export HELM_V2_HOME=$PWD/.helm
-export HELM_V3_CONFIG=$PWD/.config/helm
-export HELM_V3_DATA=$PWD/.local/share/helm
+export HELM_V2_HOME=$HOME/.helm
+export HELM_V3_CONFIG=$HOME/.config/helm
+export HELM_V3_DATA=$HOME/.local/share/helm
 
 helm3 plugin install https://github.com/helm/helm-2to3.git
-helm3 2to3 move config --dry-run
+echo y | helm3 2to3 move config --dry-run
 helm3 2to3 move config
 helm3 repo remove local
 helm3 repo update
@@ -43,6 +43,7 @@ helm3 repo update
 ```
 helm3 2to3 convert $RELEASE --dry-run --release-versions-max 3 --kube-context $KUBE_CONTEXT
 helm3 2to3 convert $RELEASE --release-versions-max 3 --kube-context $KUBE_CONTEXT
+helm3 ls
 ```
 
 # Final Clean-up
