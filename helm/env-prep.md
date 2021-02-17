@@ -42,11 +42,12 @@ helm2 reset --force
 # New Location:https://charts.helm.sh/stable
 helm2 init --client-only --skip-refresh
 helm2 repo list
-#helm repo add legacy https://kubernetes-charts.storage.googleapis.com
+# helm repo add legacy https://kubernetes-charts.storage.googleapis.com
 helm2 repo rm stable
 helm2 repo add stable https://charts.helm.sh/stable
 
 # Install Tiller (broken for K8s v16 and older Helm v2.14.3)
+kubectl apply -f tiller.yaml
 helm2 init --service-account tiller --tiller-image gcr.io/kubernetes-helm/tiller:$HELM_VERSION
 
 # Workaround for K8s v16 and older Helm v2.14.3
