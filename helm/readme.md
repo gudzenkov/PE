@@ -3,7 +3,7 @@
 2. A. K8s Upgrade v1.16
 3. A. [Nginx-ingress Chart Upgrade v1.17 -> Ingress-nginx v3.x](nginx-upgrade.md)
 4. B. [Nginx-ingress Chart Upgrade v1.17 -> Ingress-nginx v2.x](nginx-upgrade.md)
-5. K8s Upgrade v1.15 -> v1.16 -> v1.17
+5. K8s Upgrade v1.15 -> v1.16 -> v1.17 - Blue-Green Zero-downtime migration (DNS or GCLB)
 
 # ENV
 ```
