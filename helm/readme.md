@@ -1,5 +1,7 @@
-# [Helm v2->v3 Upgrade](helm-upgrade.md)
-# [Nginx-ingress Upgrade](nginx-upgrade.md)
+# Migration Path for each Product Cluster
+1. [Helm v2->v3 Migrate](helm-upgrade.md)
+2. [Nginx-ingress Chart Upgrade v1.17 -> Ingress-nginx v3.x (or v2.x)](nginx-upgrade.md)
+3. K8s Upgrade v1.15 -> v1.17
 
 # ENV
 ```
